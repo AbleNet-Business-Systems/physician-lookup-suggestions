@@ -8,11 +8,11 @@
 
     const domAbstractionLayer = loader.getDOMAbstractionLayer();
 
-    const stateInputId = 119468019;
-    const fullNameInputId = 119468013;
-    const addressOneId = 119468017;
-    const cityId = 119468018;
-    const phoneId = 119468016;
+    const stateInputId = "119468019";
+    const fullNameInputId = "119468013";
+    const addressOneId = "119468017";
+    const cityId = "119468018";
+    const phoneId = "119468016";
     // const npiId = 0;
 
     const stateControlInstance = loader.getEngine()
@@ -71,8 +71,8 @@
           firstLastInputs[1].value = lastName;
           
           domAbstractionLayer.setControlValueById(addressOneId, address_1);
-          // domAbstractionLayer.setControlValueById(cityId, city);
-          // domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
+          domAbstractionLayer.setControlValueById(cityId, city);
+          domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
         //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
