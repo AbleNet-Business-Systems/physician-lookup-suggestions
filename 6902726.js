@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 0");
+    console.log("JAVASCRIPT ATTACHED 00");
 
     prepareLoadingSpinner();
 
@@ -72,7 +72,8 @@
           firstLastInputs[1].value = lastName;
           console.log("chosen: ", address_1, city, address.telephone_number);
           
-          domAbstractionLayer.setControlValueById(addressOneId, address_1);
+          loader.getEngine().getDocument().getElementById(addressOneId).setValue({ value: address_1});
+          // domAbstractionLayer.setControlValueById(addressOneId, address_1);
           domAbstractionLayer.setControlValueById(cityId, city);
           domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
         //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
