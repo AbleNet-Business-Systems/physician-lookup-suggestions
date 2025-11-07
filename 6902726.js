@@ -10,6 +10,10 @@
 
     const stateInputId = 119468019;
     const fullNameInputId = 119468013;
+    const addressOneId = 119468017;
+    const cityId = 119468018;
+    const phoneId = 119468016;
+    // const npiId = 0;
 
     const stateControlInstance = loader.getEngine()
       .getDocument()
@@ -61,15 +65,15 @@
         newDiv.style.border = "1px solid #a0aec0";
         newDiv.style.cursor = "pointer";
         newDiv.addEventListener("click", () => {
-          const firstLastParent = document.querySelector(`[data-id="118806673"]`);
+          const firstLastParent = document.querySelector(`[data-id="${fullNameInputId}"]`);
           const firstLastInputs = firstLastParent.querySelectorAll("input");
           firstLastInputs[0].value = firstName;
           firstLastInputs[1].value = lastName;
           
-          domAbstractionLayer.setControlValueById("118806675", address_1);
-          domAbstractionLayer.setControlValueById("118806676", city);
-          domAbstractionLayer.setControlValueById("118806678", address.telephone_number);
-          domAbstractionLayer.setControlValueById("119323902", suggestion.number);
+          domAbstractionLayer.setControlValueById(addressOneId, address_1);
+          domAbstractionLayer.setControlValueById(cityId, city);
+          domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
+        //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
         });
@@ -82,11 +86,6 @@
   });
 
   function prepareLoadingSpinner() {
-
-    const fullNameControlInstance = loader.getEngine()
-      .getDocument()
-      .getElementById(118806673);
-    const lastNameInput = fullNameControlInstance.lastNameNode;
 
     const spinnerContainer = document.createElement("div");
     spinnerContainer.id = "spinner-container";
