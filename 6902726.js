@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 03");
+    console.log("JAVASCRIPT ATTACHED 04");
 
     prepareLoadingSpinner();
 
@@ -57,8 +57,8 @@
         
         // console.log("addresses: ", suggestion.addresses);
         const address = suggestion.addresses.filter(a => {
-          console.log("address: ", a)
           console.log("purpose: ", a.address_purpose);
+          console.log("filter conditional: ", a.address_purpose === "LOCATION");
           return a.address_purpose === "LOCATION";
         });
         const address_1 = address.address_1;
