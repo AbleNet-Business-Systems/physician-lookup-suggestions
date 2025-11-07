@@ -58,9 +58,10 @@
         const address = suggestion.addresses[0];
         const address_1 = address.address_1;
         const city = address.city;
+        const state = address.state;
 
         const newDiv = document.createElement("div");
-        newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}`;
+        newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}, ${state}`;
         newDiv.classList.add("physician-option");
         newDiv.style.border = "1px solid #a0aec0";
         newDiv.style.cursor = "pointer";
@@ -69,6 +70,7 @@
           const firstLastInputs = firstLastParent.querySelectorAll("input");
           firstLastInputs[0].value = firstName;
           firstLastInputs[1].value = lastName;
+          console.log("chosen: ", address_1, city, address.telephone_number);
           
           domAbstractionLayer.setControlValueById(addressOneId, address_1);
           domAbstractionLayer.setControlValueById(cityId, city);
