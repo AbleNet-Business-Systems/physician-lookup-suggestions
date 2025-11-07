@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 00");
+    console.log("JAVASCRIPT ATTACHED 01");
 
     prepareLoadingSpinner();
 
@@ -73,9 +73,8 @@
           console.log("chosen: ", address_1, city, address.telephone_number);
           
           loader.getEngine().getDocument().getElementById(addressOneId).setValue({ value: address_1});
-          // domAbstractionLayer.setControlValueById(addressOneId, address_1);
-          domAbstractionLayer.setControlValueById(cityId, city);
-          domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
+          loader.getEngine().getDocument().getElementById(cityId).setValue({ value: city});
+          loader.getEngine().getDocument().getElementById(phoneId).setValue({ value: address.telephone_number});
         //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
@@ -136,6 +135,7 @@
   }
 
   function removeAllOptions() {
+    console.log("elements to remove: ", document.querySelectorAll(".physician-option"));
     document.querySelectorAll(".physician-option").forEach(element => element.remove());
   }
 
