@@ -54,7 +54,8 @@
       data.results.forEach(suggestion => {
         const firstName = suggestion.basic.first_name;
         const lastName = suggestion.basic.last_name;
-
+        
+        console.log("addresses: ", suggestion.addresses);
         const address = suggestion.addresses[0];
         const address_1 = address.address_1;
         const city = address.city;
