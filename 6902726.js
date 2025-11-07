@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 02");
+    console.log("JAVASCRIPT ATTACHED 03");
 
     prepareLoadingSpinner();
 
@@ -55,8 +55,12 @@
         const firstName = suggestion.basic.first_name;
         const lastName = suggestion.basic.last_name;
         
-        console.log("addresses: ", suggestion.addresses);
-        const address = suggestion.addresses.filter(address => address.address_purpose === "LOCATION");
+        // console.log("addresses: ", suggestion.addresses);
+        const address = suggestion.addresses.filter(a => {
+          console.log("address: ", a)
+          console.log("purpose: ", a.address_purpose);
+          return a.address_purpose === "LOCATION";
+        });
         const address_1 = address.address_1;
         const city = address.city;
         const state = address.state;
