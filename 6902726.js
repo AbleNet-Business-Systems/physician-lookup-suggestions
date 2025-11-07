@@ -71,8 +71,8 @@
           firstLastInputs[1].value = lastName;
           
           domAbstractionLayer.setControlValueById(addressOneId, address_1);
-          domAbstractionLayer.setControlValueById(cityId, city);
-          domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
+          // domAbstractionLayer.setControlValueById(cityId, city);
+          // domAbstractionLayer.setControlValueById(phoneId, address.telephone_number);
         //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
