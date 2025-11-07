@@ -2,17 +2,17 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED");
+    console.log("JAVASCRIPT ATTACHED 0");
 
     prepareLoadingSpinner();
 
     const domAbstractionLayer = loader.getDOMAbstractionLayer();
 
-    const stateInputId = "119468019";
-    const fullNameInputId = "119468013";
-    const addressOneId = "119468017";
-    const cityId = "119468018";
-    const phoneId = "119468016";
+    const stateInputId = 119468019;
+    const fullNameInputId = 119468013;
+    const addressOneId = 119468017;
+    const cityId = 119468018;
+    const phoneId = 119468016;
     // const npiId = 0;
 
     const stateControlInstance = loader.getEngine()
