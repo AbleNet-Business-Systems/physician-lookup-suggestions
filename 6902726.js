@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 09");
+    console.log("JAVASCRIPT ATTACHED 10");
 
     prepareLoadingSpinner();
 
@@ -32,10 +32,12 @@
     const lastNameInput = fullNameControlInstance.lastNameNode;
 
     fullNameControlInstance.on("value-change", function() {
+      console.log("full name change triggered!");
       checkNpiValues();
     });
 
     async function checkNpiValues() {
+      console.log("going to check values: ", apiCallInFlight)
       if (apiCallInFlight) return;
 
       const state = domAbstractionLayer.getControlValueById(stateInputId);
@@ -67,7 +69,7 @@
         const zip = address.postal_code.length === 9 ? splitZip(address.postal_code) : address.postal_code;
 
         const newDiv = document.createElement("div");
-        newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}, ${state}`;
+        newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}, ${state}  ${zip}`;
         newDiv.classList.add("physician-option");
         newDiv.style.border = "1px solid #a0aec0";
         newDiv.style.cursor = "pointer";
@@ -99,7 +101,7 @@
   });
 
   function splitZip(zip) {
-    return `${zip.substring(0, 4)}-${zip.substring(4)}`;
+    return `${zip.substring(0, 5)}-${zip.substring(5)}`;
   }
 
   function prepareLoadingSpinner() {
@@ -149,7 +151,6 @@
   }
 
   function removeAllOptions() {
-    console.log("elements to remove: ", document.querySelectorAll(".physician-option"));
     document.querySelectorAll(".physician-option").forEach(element => element.remove());
   }
 
