@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 05");
+    console.log("JAVASCRIPT ATTACHED 06");
 
     prepareLoadingSpinner();
 
@@ -38,10 +38,10 @@
       if (apiCallInFlight) return;
       const state = domAbstractionLayer.getControlValueById(stateInputId);
       if (!state || state.length <= 0) return;
-      const lastName = lastNameInput.value;
-      if (!lastName || lastName.length <= 0);
       const firstName = firstNameInput.value;
       if (!firstName || firstName.length <= 0) return;
+      const lastName = lastNameInput.value;
+      if (!lastName || lastName.length <= 0) return;
 
       apiCallInFlight = true;
       showSpinner();
@@ -85,6 +85,7 @@
       });
 
       setTimeout(() => {
+        console.log("waiting 3 seconds now");
         apiCallInFlight = false;
       }, 3000);
     }
