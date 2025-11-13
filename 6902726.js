@@ -64,6 +64,7 @@
         const address_1 = address.address_1;
         const city = address.city;
         const state = address.state;
+        const zip = address.postal_code.length === 9 ? splitZip(address.postal_code) : address.postal_code;
 
         const newDiv = document.createElement("div");
         newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}, ${state}`;
@@ -98,8 +99,11 @@
 
   });
 
-  function prepareLoadingSpinner() {
+  function splitZip(zip) {
+    return `${ zip.substring(0, 4)}-${zip.substring(4)}`;
+  }
 
+  function prepareLoadingSpinner() {
     const spinnerContainer = document.createElement("div");
     spinnerContainer.id = "spinner-container";
     spinnerContainer.classList.add("loader-container");
