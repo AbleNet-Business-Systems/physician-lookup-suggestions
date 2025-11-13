@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 15");
+    console.log("JAVASCRIPT ATTACHED 16");
 
     prepareLoadingSpinner();
 
@@ -42,10 +42,10 @@
       checkNpiValues();
     });
 
-    fullNameControlInstance.on("value-change", function() {
-      console.log("full name change triggered!");
-      checkNpiValues();
-    });
+    // fullNameControlInstance.on("value-change", function() {
+    //   console.log("full name change triggered!");
+    //   checkNpiValues();
+    // });
 
     async function checkNpiValues() {
       console.log("going to check values: ", apiCallInFlight)
