@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 06");
+    console.log("JAVASCRIPT ATTACHED 07");
 
     prepareLoadingSpinner();
 
@@ -13,7 +13,8 @@
     const addressOneId = 119468017;
     const cityId = 119468018;
     const phoneId = 119468016;
-    // const npiId = 0;
+    const zipId = 119468020;
+    const npiId = 119543356;
 
     const stateControlInstance = loader.getEngine()
       .getDocument()
@@ -36,10 +37,13 @@
 
     async function checkNpiValues() {
       if (apiCallInFlight) return;
+
       const state = domAbstractionLayer.getControlValueById(stateInputId);
       if (!state || state.length <= 0) return;
+
       const firstName = firstNameInput.value;
       if (!firstName || firstName.length <= 0) return;
+
       const lastName = lastNameInput.value;
       if (!lastName || lastName.length <= 0) return;
 
@@ -76,6 +80,8 @@
           loader.getEngine().getDocument().getElementById(addressOneId).setValue({ value: address_1});
           loader.getEngine().getDocument().getElementById(cityId).setValue({ value: city});
           loader.getEngine().getDocument().getElementById(phoneId).setValue({ value: address.telephone_number});
+          loader.getEngine().getDocument().getElementById(zipId).setValue({ value: address.postal_code });
+          loader.getEngine().getDocument().getElementById(npiId).setValue({ value: suggestion.number });
         //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
@@ -85,9 +91,9 @@
       });
 
       setTimeout(() => {
-        console.log("waiting 3 seconds now");
+        console.log("waited 2 seconds now");
         apiCallInFlight = false;
-      }, 3000);
+      }, 2000);
     }
 
   });
