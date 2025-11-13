@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 14");
+    console.log("JAVASCRIPT ATTACHED 15");
 
     prepareLoadingSpinner();
 
@@ -32,15 +32,15 @@
     const lastNameInput = fullNameControlInstance.lastNameNode;
     console.log("what is firstnameinput: ", typeof firstNameInput, firstNameInput);
 
-    // firstNameInput.on("value-change", function() {
-    //   console.log("first name input triggered");
-    //   checkNpiValues();
-    // });
+    firstNameInput.addEventListener("input", function(event) {
+      console.log("first name input triggered");
+      checkNpiValues();
+    });
 
-    // lastNameInput.on("value-change", function() {
-    //   console.log("last name input triggered");
-    //   checkNpiValues();
-    // });
+    lastNameInput.addEventListener("input", function(event) {
+      console.log("last name input triggered");
+      checkNpiValues();
+    });
 
     fullNameControlInstance.on("value-change", function() {
       console.log("full name change triggered!");
