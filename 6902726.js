@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 07");
+    console.log("JAVASCRIPT ATTACHED 08");
 
     prepareLoadingSpinner();
 
@@ -91,10 +91,7 @@
         parentElement.appendChild(newDiv);
       });
 
-      setTimeout(() => {
-        console.log("waited 2 seconds now");
-        apiCallInFlight = false;
-      }, 2000);
+      apiCallInFlight = false;
     }
 
   });
