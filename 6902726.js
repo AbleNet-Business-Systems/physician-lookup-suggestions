@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 19");
+    console.log("JAVASCRIPT ATTACHED 20");
 
     prepareLoadingSpinner();
 
@@ -39,6 +39,15 @@
     lastNameInput.addEventListener("keyup", function(event) {
       checkToSeeIfCallShouldBeMade();
     });
+
+    const npiInstance = loader.getEngine()
+      .getDocument()
+      .getElementById(npiId);
+    npiInstance.on("value-change", function() {
+      const npiValue = domAbstractionLayer.getControlValueById(npiId).value;
+      if (npiValue.length > 0) addClearNpiListeners();
+      else removeNpiListeners();
+    })
 
     function checkToSeeIfCallShouldBeMade() {
       console.log("going to check values")
@@ -125,6 +134,24 @@
 
   function splitZip(zip) {
     return `${zip.substring(0, 5)}-${zip.substring(5)}`;
+  }
+
+  const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
+
+  function addClearNpiListeners() {
+    fieldsToWatch.forEach(fieldId => {
+      const field = loader.getEngine().getDocument().getElementById(fieldId);
+      field.on("value-change", function() {
+        loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
+      });
+    });
+  };
+
+  function removeNpiListeners() {
+    fieldsToWatch.forEach(fieldId => {
+      const field = loader.getEngine().getDocument().getElementById(fieldId);
+      field.removeEventListener("value-change");
+    });
   }
 
   function prepareLoadingSpinner() {
