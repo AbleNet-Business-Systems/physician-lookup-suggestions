@@ -83,7 +83,10 @@
         const parentElement = document.querySelector(`[data-id="${fullNameInputId}"]`);
         parentElement.appendChild(newDiv);
       });
-      apiCallInFlight = false;
+
+      setTimeout(() => {
+        apiCallInFlight = false;
+      }, 3000);
     }
 
   });
