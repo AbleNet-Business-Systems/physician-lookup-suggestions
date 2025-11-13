@@ -1,8 +1,9 @@
 (function () {
   let apiCallInFlight = false;
+  let timout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 16");
+    console.log("JAVASCRIPT ATTACHED 17");
 
     prepareLoadingSpinner();
 
@@ -21,7 +22,7 @@
       .getElementById(stateInputId);
 
     stateControlInstance.on("value-change", function() {
-      checkNpiValues();
+      checkToSeeIfCallShouldBeMade();
     });
 
     const fullNameControlInstance = loader
@@ -30,25 +31,17 @@
       .getElementById(fullNameInputId);
     const firstNameInput = fullNameControlInstance.firstNameNode;
     const lastNameInput = fullNameControlInstance.lastNameNode;
-    console.log("what is firstnameinput: ", typeof firstNameInput, firstNameInput);
 
-    firstNameInput.addEventListener("input", function(event) {
-      console.log("first name input triggered");
-      checkNpiValues();
+    firstNameInput.addEventListener("keyup", function(event) {
+      checkToSeeIfCallShouldBeMade();
     });
 
-    lastNameInput.addEventListener("input", function(event) {
-      console.log("last name input triggered");
-      checkNpiValues();
+    lastNameInput.addEventListener("keyup", function(event) {
+      checkToSeeIfCallShouldBeMade();
     });
 
-    // fullNameControlInstance.on("value-change", function() {
-    //   console.log("full name change triggered!");
-    //   checkNpiValues();
-    // });
-
-    async function checkNpiValues() {
-      console.log("going to check values: ", apiCallInFlight)
+    function checkToSeeIfCallShouldBeMade() {
+      console.log("going to check values")
       if (apiCallInFlight) return;
 
       const state = domAbstractionLayer.getControlValueById(stateInputId);
@@ -60,7 +53,15 @@
       const lastName = lastNameInput.value;
       if (!lastName || lastName.length <= 0) return;
 
-      apiCallInFlight = true;
+      clearTimeout(timeout);
+
+      timeout = setTimeout(function() {
+        apiCallInFlight = true;
+        checkNpiValues();
+      }, 1500);
+    }
+
+    async function checkNpiValues() {
       showSpinner();
       removeAllOptions();
       const proxyUrl = `https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/test/helloworld?last_name=${lastName}&first_name=${firstName}&state=${state}`;
