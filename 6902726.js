@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 10");
+    console.log("JAVASCRIPT ATTACHED 11");
 
     prepareLoadingSpinner();
 
@@ -57,6 +57,10 @@
       const data = await response.json();
       hideSpinner();
 
+      if (!data.results) {
+        addSuggestionBox("No results found.");
+      }
+
       data.results.forEach(suggestion => {
         const firstName = suggestion.basic.first_name;
         const lastName = suggestion.basic.last_name;
@@ -68,11 +72,7 @@
         const state = address.state;
         const zip = address.postal_code.length === 9 ? splitZip(address.postal_code) : address.postal_code;
 
-        const newDiv = document.createElement("div");
-        newDiv.textContent = `${firstName} ${lastName} - ${address_1}, ${city}, ${state}  ${zip}`;
-        newDiv.classList.add("physician-option");
-        newDiv.style.border = "1px solid #a0aec0";
-        newDiv.style.cursor = "pointer";
+        const newDiv = addSuggestionBox(`${firstName} ${lastName} - ${address_1}, ${city}, ${state}  ${zip}`);
         newDiv.addEventListener("click", () => {
           apiCallInFlight = true;
           const firstLastParent = document.querySelector(`[data-id="${fullNameInputId}"]`);
@@ -99,6 +99,15 @@
     }
 
   });
+
+  function addSuggestionBox(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    div.classList.add("physician-option");
+    div.style.border = "1px solid #a0aec0";
+    div.style.cursor = "pointer";
+    return div;
+  }
 
   function splitZip(zip) {
     return `${zip.substring(0, 5)}-${zip.substring(5)}`;
