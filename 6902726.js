@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 11");
+    console.log("JAVASCRIPT ATTACHED 12");
 
     prepareLoadingSpinner();
 
@@ -57,8 +57,10 @@
       const data = await response.json();
       hideSpinner();
 
-      if (!data.results) {
-        addSuggestionBox("No results found.");
+      if (data.results.length === 0) {
+        const newDiv = createSuggestionBox("No results found.");
+        const parentElement = document.querySelector(`[data-id="${fullNameInputId}"]`);
+        parentElement.appendChild(newDiv);
       }
 
       data.results.forEach(suggestion => {
@@ -72,7 +74,7 @@
         const state = address.state;
         const zip = address.postal_code.length === 9 ? splitZip(address.postal_code) : address.postal_code;
 
-        const newDiv = addSuggestionBox(`${firstName} ${lastName} - ${address_1}, ${city}, ${state}  ${zip}`);
+        const newDiv = createSuggestionBox(`${firstName} ${lastName} - ${address_1}, ${city}, ${state}  ${zip}`);
         newDiv.addEventListener("click", () => {
           apiCallInFlight = true;
           const firstLastParent = document.querySelector(`[data-id="${fullNameInputId}"]`);
@@ -100,7 +102,7 @@
 
   });
 
-  function addSuggestionBox(text) {
+  function createSuggestionBox(text) {
     const div = document.createElement("div");
     div.textContent = text;
     div.classList.add("physician-option");
