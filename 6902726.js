@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 12");
+    console.log("JAVASCRIPT ATTACHED 13");
 
     prepareLoadingSpinner();
 
@@ -31,10 +31,20 @@
     const firstNameInput = fullNameControlInstance.firstNameNode;
     const lastNameInput = fullNameControlInstance.lastNameNode;
 
-    fullNameControlInstance.on("value-change", function() {
-      console.log("full name change triggered!");
+    firstNameInput.on("value-change", function() {
+      console.log("first name input triggered");
       checkNpiValues();
     });
+
+    lastNameInput.on("value-change", function() {
+      console.log("last name input triggered");
+      checkNpiValues();
+    });
+
+    // fullNameControlInstance.on("value-change", function() {
+    //   console.log("full name change triggered!");
+    //   checkNpiValues();
+    // });
 
     async function checkNpiValues() {
       console.log("going to check values: ", apiCallInFlight)
