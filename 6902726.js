@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 18");
+    console.log("JAVASCRIPT ATTACHED 19");
 
     prepareLoadingSpinner();
 
@@ -57,11 +57,11 @@
 
       timeout = setTimeout(function() {
         apiCallInFlight = true;
-        checkNpiValues();
-      }, 1500);
+        checkNpiValues(state, firstName, lastName);
+      }, 1000);
     }
 
-    async function checkNpiValues() {
+    async function checkNpiValues(state, firstName, lastName) {
       showSpinner();
       removeAllOptions();
       const proxyUrl = `https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/test/helloworld?last_name=${lastName}&first_name=${firstName}&state=${state}`;
