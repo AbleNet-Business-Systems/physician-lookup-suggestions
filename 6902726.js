@@ -1,9 +1,9 @@
 (function () {
   let apiCallInFlight = false;
-  let timout = null;
+  let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 17");
+    console.log("JAVASCRIPT ATTACHED 18");
 
     prepareLoadingSpinner();
 
