@@ -2,7 +2,7 @@
   let apiCallInFlight = false;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 08");
+    console.log("JAVASCRIPT ATTACHED 09");
 
     prepareLoadingSpinner();
 
@@ -72,6 +72,7 @@
         newDiv.style.border = "1px solid #a0aec0";
         newDiv.style.cursor = "pointer";
         newDiv.addEventListener("click", () => {
+          apiCallInFlight = true;
           const firstLastParent = document.querySelector(`[data-id="${fullNameInputId}"]`);
           const firstLastInputs = firstLastParent.querySelectorAll("input");
           firstLastInputs[0].value = firstName;
@@ -81,11 +82,12 @@
           loader.getEngine().getDocument().getElementById(addressOneId).setValue({ value: address_1});
           loader.getEngine().getDocument().getElementById(cityId).setValue({ value: city});
           loader.getEngine().getDocument().getElementById(phoneId).setValue({ value: address.telephone_number});
-          loader.getEngine().getDocument().getElementById(zipId).setValue({ value: address.postal_code });
+          loader.getEngine().getDocument().getElementById(zipId).setValue({ value: zip });
           loader.getEngine().getDocument().getElementById(npiId).setValue({ value: suggestion.number });
-        //   domAbstractionLayer.setControlValueById("119323902", suggestion.number);
 
           removeAllOptions();
+
+          apiCallInFlight = false;
         });
         const parentElement = document.querySelector(`[data-id="${fullNameInputId}"]`);
         parentElement.appendChild(newDiv);
@@ -97,7 +99,7 @@
   });
 
   function splitZip(zip) {
-    return `${ zip.substring(0, 4)}-${zip.substring(4)}`;
+    return `${zip.substring(0, 4)}-${zip.substring(4)}`;
   }
 
   function prepareLoadingSpinner() {
