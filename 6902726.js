@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 22");
+    console.log("JAVASCRIPT ATTACHED 23");
 
     prepareLoadingSpinner();
 
@@ -44,6 +44,9 @@
       .getDocument()
       .getElementById(npiId);
     npiInstance.on("value-change", function() {
+      console.log("npi value change: ", loader.getEngine().getDocument().getElementById(npiId).value);
+      console.log("npi value change 2: ", domAbstractionLayer.getControlValueById(npiId).value);
+
       const npiValue = domAbstractionLayer.getControlValueById(npiId).value;
       if (npiValue.length > 0) {
         addClearNpiListeners();
