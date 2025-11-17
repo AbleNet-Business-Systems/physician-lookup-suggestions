@@ -2,20 +2,31 @@
   let apiCallInFlight = false;
   let timeout = null;
 
+  const stateInputId = 119468019;
+  const fullNameInputId = 119468013;
+  const addressOneId = 119468017;
+  const cityId = 119468018;
+  const phoneId = 119468016;
+  const zipId = 119468020;
+  const npiId = 119543356;
+
+  const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
+
+
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 26");
+    console.log("JAVASCRIPT ATTACHED 27");
 
     prepareLoadingSpinner();
 
     const domAbstractionLayer = loader.getDOMAbstractionLayer();
 
-    const stateInputId = 119468019;
-    const fullNameInputId = 119468013;
-    const addressOneId = 119468017;
-    const cityId = 119468018;
-    const phoneId = 119468016;
-    const zipId = 119468020;
-    const npiId = 119543356;
+    // const stateInputId = 119468019;
+    // const fullNameInputId = 119468013;
+    // const addressOneId = 119468017;
+    // const cityId = 119468018;
+    // const phoneId = 119468016;
+    // const zipId = 119468020;
+    // const npiId = 119543356;
 
     const stateControlInstance = loader.getEngine()
       .getDocument()
@@ -146,7 +157,7 @@
 
 
   function addClearNpiListeners() {
-    const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
+    // const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
     console.log("inside addClearNpiListeners: ", fieldsToWatch);
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
