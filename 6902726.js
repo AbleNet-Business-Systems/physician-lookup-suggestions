@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 29");
+    console.log("JAVASCRIPT ATTACHED 30");
 
     prepareLoadingSpinner();
 
@@ -151,17 +151,18 @@
   }
 
   function addEventListenerForNpi() {
+    console.log("clearing npi now");
     loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
-    removeNpiListeners();
+    // removeNpiListeners();
   }
 
-  function removeNpiListeners() {
-    fieldsToWatch.forEach(fieldId => {
-      const field = loader.getEngine().getDocument().getElementById(fieldId);
-      console.log("removing clear npi listener: ", field);
-      field.removeEventListener("value-change", addEventListenerForNpi);
-    });
-  }
+  // function removeNpiListeners() {
+  //   fieldsToWatch.forEach(fieldId => {
+  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
+  //     console.log("removing clear npi listener: ", field);
+  //     field.removeEventListener("value-change", addEventListenerForNpi);
+  //   });
+  // }
 
   function prepareLoadingSpinner() {
     const spinnerContainer = document.createElement("div");
