@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 24");
+    console.log("JAVASCRIPT ATTACHED 25");
 
     prepareLoadingSpinner();
 
@@ -147,6 +147,7 @@
   const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
 
   function addClearNpiListeners() {
+    console.log("inside addClearNpiListeners: ", fieldsToWatch);
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
       console.log("adding clear npi listener: ", field);
