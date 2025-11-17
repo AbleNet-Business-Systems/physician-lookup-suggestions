@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 33");
+    console.log("JAVASCRIPT ATTACHED 34");
 
     prepareLoadingSpinner();
 
@@ -144,8 +144,8 @@
 
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      field.addEventListener("change", clearNpi);
-      // field.on("value-change", clearNpi);
+      console.log("what is this field? ", field);
+      field.on("value-change", clearNpi);
     })
   }
 
