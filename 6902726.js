@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 32");
+    console.log("JAVASCRIPT ATTACHED 33");
 
     prepareLoadingSpinner();
 
@@ -144,7 +144,8 @@
 
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      field.on("value-change", clearNpi);
+      field.addEventListener("change", clearNpi);
+      // field.on("value-change", clearNpi);
     })
   }
 
@@ -152,7 +153,6 @@
     console.log("clearing npi now");
     loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
     removeNpiClearingListeners();
-    // TODO: remove event listeners after npi is cleared
   }
 
   function removeNpiClearingListeners() {
@@ -165,7 +165,6 @@
 
     firstNameInput.removeEventListener("keyup", clearNpi);
     lastNameInput.removeEventListener("keyup", clearNpi);
-
   }
 
   function prepareLoadingSpinner() {
