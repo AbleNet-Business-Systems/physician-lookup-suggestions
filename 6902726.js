@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 25");
+    console.log("JAVASCRIPT ATTACHED 26");
 
     prepareLoadingSpinner();
 
@@ -144,9 +144,9 @@
     return `${zip.substring(0, 5)}-${zip.substring(5)}`;
   }
 
-  const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
 
   function addClearNpiListeners() {
+    const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
     console.log("inside addClearNpiListeners: ", fieldsToWatch);
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
@@ -157,13 +157,13 @@
     });
   };
 
-  function removeNpiListeners() {
-    fieldsToWatch.forEach(fieldId => {
-      const field = loader.getEngine().getDocument().getElementById(fieldId);
-      console.log("removing clear npi listener: ", field);
-      field.removeEventListener("value-change");
-    });
-  }
+  // function removeNpiListeners() {
+  //   fieldsToWatch.forEach(fieldId => {
+  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
+  //     console.log("removing clear npi listener: ", field);
+  //     field.removeEventListener("value-change");
+  //   });
+  // }
 
   function prepareLoadingSpinner() {
     const spinnerContainer = document.createElement("div");
