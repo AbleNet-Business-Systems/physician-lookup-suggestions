@@ -14,19 +14,11 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 27");
+    console.log("JAVASCRIPT ATTACHED 28");
 
     prepareLoadingSpinner();
 
     const domAbstractionLayer = loader.getDOMAbstractionLayer();
-
-    // const stateInputId = 119468019;
-    // const fullNameInputId = 119468013;
-    // const addressOneId = 119468017;
-    // const cityId = 119468018;
-    // const phoneId = 119468016;
-    // const zipId = 119468020;
-    // const npiId = 119543356;
 
     const stateControlInstance = loader.getEngine()
       .getDocument()
@@ -50,22 +42,6 @@
     lastNameInput.addEventListener("keyup", function(event) {
       checkToSeeIfCallShouldBeMade();
     });
-
-    // const npiInstance = loader.getEngine()
-    //   .getDocument()
-    //   .getElementById(npiId);
-    // npiInstance.on("value-change", function() {
-    //   console.log("npi value change: ", loader.getEngine().getDocument().getElementById(npiId).value);
-    //   console.log("npi value change 2: ", domAbstractionLayer.getControlValueById(npiId).value);
-
-    //   const npiValue = domAbstractionLayer.getControlValueById(npiId).value;
-    //   if (npiValue.length > 0) {
-    //     addClearNpiListeners();
-    //   } 
-    //   else {
-    //     removeNpiListeners();
-    //   }
-    // })
 
     function checkToSeeIfCallShouldBeMade() {
       console.log("going to check values")
@@ -157,24 +133,23 @@
 
 
   function addClearNpiListeners() {
-    // const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
-    console.log("inside addClearNpiListeners: ", fieldsToWatch);
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      console.log("adding clear npi listener: ", field);
       field.on("value-change", function() {
+        console.log("changed value! ", field);
         loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
+        removeNpiListeners();
       });
     });
   };
 
-  // function removeNpiListeners() {
-  //   fieldsToWatch.forEach(fieldId => {
-  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
-  //     console.log("removing clear npi listener: ", field);
-  //     field.removeEventListener("value-change");
-  //   });
-  // }
+  function removeNpiListeners() {
+    fieldsToWatch.forEach(fieldId => {
+      const field = loader.getEngine().getDocument().getElementById(fieldId);
+      console.log("removing clear npi listener: ", field);
+      field.removeEventListener("value-change");
+    });
+  }
 
   function prepareLoadingSpinner() {
     const spinnerContainer = document.createElement("div");
