@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 30");
+    console.log("JAVASCRIPT ATTACHED 31");
 
     prepareLoadingSpinner();
 
@@ -104,7 +104,7 @@
           loader.getEngine().getDocument().getElementById(zipId).setValue({ value: zip });
           loader.getEngine().getDocument().getElementById(npiId).setValue({ value: suggestion.number });
 
-          addClearNpiListeners();
+          addClearingOfNpiListeners();
           removeAllOptions();
 
           apiCallInFlight = false;
@@ -131,38 +131,28 @@
     return `${zip.substring(0, 5)}-${zip.substring(5)}`;
   }
 
+  function addClearingOfNpiListeners() {
+    const fullNameControlInstance = loader
+      .getEngine()
+      .getDocument()
+      .getElementById(fullNameInputId);
+    const firstNameInput = fullNameControlInstance.firstNameNode;
+    const lastNameInput = fullNameControlInstance.lastNameNode;
 
-  // function addClearNpiListeners() {
-  //   fieldsToWatch.forEach(fieldId => {
-  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
-  //     field.on("value-change", function() {
-  //       console.log("changed value! ", field);
-  //       loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
-  //       removeNpiListeners();
-  //     });
-  //   });
-  // };
+    firstNameInput.on("value-change", clearNpi);
+    lastNameInput.on("value-change",clearNpi);
 
-  function addClearNpiListeners() {
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      field.on("value-change", addEventListenerForNpi);
+      field.on("value-change", clearNpi);
     })
   }
 
-  function addEventListenerForNpi() {
+  function clearNpi() {
     console.log("clearing npi now");
     loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
-    // removeNpiListeners();
+    // TODO: remove event listeners after npi is cleared
   }
-
-  // function removeNpiListeners() {
-  //   fieldsToWatch.forEach(fieldId => {
-  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
-  //     console.log("removing clear npi listener: ", field);
-  //     field.removeEventListener("value-change", addEventListenerForNpi);
-  //   });
-  // }
 
   function prepareLoadingSpinner() {
     const spinnerContainer = document.createElement("div");
