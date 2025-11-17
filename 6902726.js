@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 34");
+    // console.log("JAVASCRIPT ATTACHED 34");
 
     prepareLoadingSpinner();
 
@@ -44,7 +44,7 @@
     });
 
     function checkToSeeIfCallShouldBeMade() {
-      console.log("going to check values")
+      // console.log("going to check values")
       if (apiCallInFlight) return;
 
       const state = domAbstractionLayer.getControlValueById(stateInputId);
@@ -96,7 +96,7 @@
           const firstLastInputs = firstLastParent.querySelectorAll("input");
           firstLastInputs[0].value = firstName;
           firstLastInputs[1].value = lastName;
-          console.log("chosen: ", address_1, city, address.telephone_number);
+          // console.log("chosen: ", address_1, city, address.telephone_number);
           
           loader.getEngine().getDocument().getElementById(addressOneId).setValue({ value: address_1});
           loader.getEngine().getDocument().getElementById(cityId).setValue({ value: city});
@@ -144,13 +144,13 @@
 
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      console.log("what is this field? ", field);
+      // console.log("what is this field? ", field);
       field.on("value-change", clearNpi);
     })
   }
 
   function clearNpi() {
-    console.log("clearing npi now");
+    // console.log("clearing npi now");
     loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
     removeNpiClearingListeners();
   }
@@ -200,7 +200,7 @@
     spinner.animate(spinnerSpinning, spinnerTiming);
 
     document.getElementById("spinner-container").appendChild(spinner);
-    console.log("spinner attached");
+    // console.log("spinner attached");
   };
 
   function showSpinner() {
