@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 31");
+    console.log("JAVASCRIPT ATTACHED 32");
 
     prepareLoadingSpinner();
 
@@ -139,8 +139,8 @@
     const firstNameInput = fullNameControlInstance.firstNameNode;
     const lastNameInput = fullNameControlInstance.lastNameNode;
 
-    firstNameInput.on("value-change", clearNpi);
-    lastNameInput.on("value-change",clearNpi);
+    firstNameInput.addEventListener("keyup", clearNpi);
+    lastNameInput.addEventListener("keyup", clearNpi);
 
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
@@ -151,7 +151,21 @@
   function clearNpi() {
     console.log("clearing npi now");
     loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
+    removeNpiClearingListeners();
     // TODO: remove event listeners after npi is cleared
+  }
+
+  function removeNpiClearingListeners() {
+    const fullNameControlInstance = loader
+      .getEngine()
+      .getDocument()
+      .getElementById(fullNameInputId);
+    const firstNameInput = fullNameControlInstance.firstNameNode;
+    const lastNameInput = fullNameControlInstance.lastNameNode;
+
+    firstNameInput.removeEventListener("keyup", clearNpi);
+    lastNameInput.removeEventListener("keyup", clearNpi);
+
   }
 
   function prepareLoadingSpinner() {
