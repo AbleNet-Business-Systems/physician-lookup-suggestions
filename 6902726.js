@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 28");
+    console.log("JAVASCRIPT ATTACHED 29");
 
     prepareLoadingSpinner();
 
@@ -132,22 +132,34 @@
   }
 
 
+  // function addClearNpiListeners() {
+  //   fieldsToWatch.forEach(fieldId => {
+  //     const field = loader.getEngine().getDocument().getElementById(fieldId);
+  //     field.on("value-change", function() {
+  //       console.log("changed value! ", field);
+  //       loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
+  //       removeNpiListeners();
+  //     });
+  //   });
+  // };
+
   function addClearNpiListeners() {
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
-      field.on("value-change", function() {
-        console.log("changed value! ", field);
-        loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
-        removeNpiListeners();
-      });
-    });
-  };
+      field.on("value-change", addEventListenerForNpi);
+    })
+  }
+
+  function addEventListenerForNpi() {
+    loader.getEngine().getDocument().getElementById(npiId).setValue({ value: "" });
+    removeNpiListeners();
+  }
 
   function removeNpiListeners() {
     fieldsToWatch.forEach(fieldId => {
       const field = loader.getEngine().getDocument().getElementById(fieldId);
       console.log("removing clear npi listener: ", field);
-      field.removeEventListener("value-change");
+      field.removeEventListener("value-change", addEventListenerForNpi);
     });
   }
 
