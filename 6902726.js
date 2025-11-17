@@ -3,7 +3,7 @@
   let timeout = null;
 
   window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 23");
+    console.log("JAVASCRIPT ATTACHED 24");
 
     prepareLoadingSpinner();
 
@@ -40,21 +40,21 @@
       checkToSeeIfCallShouldBeMade();
     });
 
-    const npiInstance = loader.getEngine()
-      .getDocument()
-      .getElementById(npiId);
-    npiInstance.on("value-change", function() {
-      console.log("npi value change: ", loader.getEngine().getDocument().getElementById(npiId).value);
-      console.log("npi value change 2: ", domAbstractionLayer.getControlValueById(npiId).value);
+    // const npiInstance = loader.getEngine()
+    //   .getDocument()
+    //   .getElementById(npiId);
+    // npiInstance.on("value-change", function() {
+    //   console.log("npi value change: ", loader.getEngine().getDocument().getElementById(npiId).value);
+    //   console.log("npi value change 2: ", domAbstractionLayer.getControlValueById(npiId).value);
 
-      const npiValue = domAbstractionLayer.getControlValueById(npiId).value;
-      if (npiValue.length > 0) {
-        addClearNpiListeners();
-      } 
-      else {
-        removeNpiListeners();
-      }
-    })
+    //   const npiValue = domAbstractionLayer.getControlValueById(npiId).value;
+    //   if (npiValue.length > 0) {
+    //     addClearNpiListeners();
+    //   } 
+    //   else {
+    //     removeNpiListeners();
+    //   }
+    // })
 
     function checkToSeeIfCallShouldBeMade() {
       console.log("going to check values")
@@ -117,6 +117,7 @@
           loader.getEngine().getDocument().getElementById(zipId).setValue({ value: zip });
           loader.getEngine().getDocument().getElementById(npiId).setValue({ value: suggestion.number });
 
+          addClearNpiListeners();
           removeAllOptions();
 
           apiCallInFlight = false;
