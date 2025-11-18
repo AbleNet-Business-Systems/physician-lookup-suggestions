@@ -14,7 +14,7 @@
 
 
   window.addEventListener("load", function () {
-    // console.log("JAVASCRIPT ATTACHED 34");
+    console.log("JAVASCRIPT ATTACHED 35");
 
     prepareLoadingSpinner();
 
@@ -67,7 +67,7 @@
     async function checkNpiValues(state, firstName, lastName) {
       showSpinner();
       removeAllOptions();
-      const proxyUrl = `https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/test/helloworld?last_name=${lastName}&first_name=${firstName}&state=${state}`;
+      const proxyUrl = `https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/search?last_name=${lastName}&first_name=${firstName}&state=${state}`;
       const response = await fetch(proxyUrl);
       const data = await response.json();
       hideSpinner();
