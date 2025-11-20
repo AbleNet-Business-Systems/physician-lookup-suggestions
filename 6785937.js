@@ -8,8 +8,7 @@
   const cityId = 116269195;
   const phoneId = 116269193;
   const zipId = 117347958;
-//   TODO: add npi field id number once added on form
-  const npiId = 0;
+  const npiId = 119609976;
 
   const fieldsToWatch = [stateInputId, addressOneId, cityId, phoneId, zipId]; 
 
