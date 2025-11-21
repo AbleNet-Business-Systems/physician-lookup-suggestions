@@ -73,7 +73,7 @@
       hideSpinner();
 
       if (data.results.length === 0) {
-        const newDiv = createSuggestionBox("No results found.");
+        const newDiv = createSuggestionBox("No results found - Please manually enter physician");
         const parentElement = document.querySelector(`[data-id="${fullNameInputId}"]`);
         parentElement.appendChild(newDiv);
       }
