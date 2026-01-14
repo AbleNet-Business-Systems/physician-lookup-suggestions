@@ -5,8 +5,8 @@
 
     const updateButton = loader
       .getEngine()
-      .getDocument()
-      .querySelector('[data-role="update"]');
+      .getDocument();
+    //   .querySelector('[data-role="update"]');
 
     console.log("update button: ", updateButton);
 
