@@ -1,7 +1,7 @@
 (function () {
 
-  window.addEventListener("load", function () {
-    console.log("JAVASCRIPT ATTACHED 002");
+  window.addEventListener("DOMContentLoaded", function () {
+    console.log("JAVASCRIPT ATTACHED 003");
 
     // const updateButton = loader
     //   .getEngine()
