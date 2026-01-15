@@ -3,7 +3,7 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 005");
+    console.log("JAVASCRIPT ATTACHED 006");
 
     // const updateButton = loader
     //   .getEngine()
