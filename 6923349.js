@@ -3,7 +3,7 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 008");
+    console.log("JAVASCRIPT ATTACHED 009");
   });
 
   function loadAfterTimeout() {
@@ -21,7 +21,7 @@
     const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
     console.log("fn: ", fn);
 
-    fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
+    fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/test/notify", {
       method: "POST",
       body: JSON.stringify({
         fn: fn
