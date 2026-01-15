@@ -1,4 +1,6 @@
 (function () {
+  const fnInputId = 120160623;
+
   window.addEventListener("load", function () {
     loadAfterTimeout();
     console.log("JAVASCRIPT ATTACHED 005");
@@ -17,12 +19,16 @@
         console.log("timeout complete");
         const updateButton = document.querySelector('[data-role="update"]');
         updateButton.addEventListener("click", handleUpdate);
-    }, 10000);
+    }, 8000);
   }
 
   function handleUpdate() {
     const url = window.location.href;
     console.log("the url: ", url);
+
+    const fn = loader.getEngine().getDocument().getElementById(fnInputId);
+    console.log("fn: ", fn);
+
   }
 
 })();
