@@ -1,7 +1,7 @@
 (function () {
-
-  window.addEventListener("DOMContentLoaded", function () {
-    console.log("JAVASCRIPT ATTACHED 003");
+  window.addEventListener("load", function () {
+    loadAfterTimeout();
+    console.log("JAVASCRIPT ATTACHED 004");
 
     // const updateButton = loader
     //   .getEngine()
@@ -12,5 +12,13 @@
     console.log("update button: ", updateButton);
 
   });
+
+  function loadAfterTimeout() {
+    setTimeout(function() {
+        console.log("timeout complete");
+        const updateButton = document.querySelector('[data-role="update"]');
+        console.log("update button: ", updateButton);
+    }, 10000);
+  }
 
 })();
