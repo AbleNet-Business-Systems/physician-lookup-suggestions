@@ -3,15 +3,7 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 007");
-
-    // const updateButton = loader
-    //   .getEngine()
-    //   .getDocument();
-    //   .querySelector('[data-role="update"]');
-
-    // const updateButton = document.querySelector('[data-role="update"]');
-
+    console.log("JAVASCRIPT ATTACHED 008");
   });
 
   function loadAfterTimeout() {
@@ -29,7 +21,7 @@
     const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
     console.log("fn: ", fn);
 
-    fetch("https://hooks.zapier.com/hooks/catch/24234008/ugkuyvf/", {
+    fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
       method: "POST",
       body: JSON.stringify({
         fn: fn
