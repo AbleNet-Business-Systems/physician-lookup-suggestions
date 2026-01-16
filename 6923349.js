@@ -1,33 +1,37 @@
 (function () {
-  const fnInputId = 120160623;
-
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 013");
+    console.log("JAVASCRIPT ATTACHED 014");
   });
 
   function loadAfterTimeout() {
     setTimeout(function() {
-          console.log("LOADED");
+        console.log("LOADED");
         const updateButton = document.querySelector('[data-role="update"]');
         if (updateButton) {
           updateButton.addEventListener("click", handleUpdate);
         }
-    }, 15000);
+    }, 8000);
   }
 
   function handleUpdate() {
-    const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
+    // const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
 
-    fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
-      method: "POST",
-      body: JSON.stringify({
-        fn: fn
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    });
+    const fnInputIds = ["#120160623"];
+    const selectorString = fnInputIds.join(", ");
+
+    const fn = loader.getEngine().getDocument().querySelector(selectorString).input.value;
+    console.log("fn:", fn);
+
+    // fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     fn: fn
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8"
+    //   }
+    // });
   }
 
 })();
