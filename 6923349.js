@@ -1,7 +1,7 @@
 (function () {
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 019");
+    console.log("JAVASCRIPT ATTACHED 020");
   });
 
   function loadAfterTimeout() {
@@ -18,9 +18,8 @@
     // const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
 
     const fnInputIds = [120160623, 123456789];
-    const selectorString = fnInputIds.map(id => `#\\3${id} `).join(", ");
-    console.log("selector string: ", selectorString);
-    const fn = document.querySelector(selectorString);
+    const currentInputId = fnInputIds.find(inputId => loader.getEngine().getDocument().getElementById(inputId));
+    const fn = loader.getEngine().getDocument().getElementById(currentInputId).input.value;
     console.log("fn:", fn);
 
     // fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
