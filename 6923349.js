@@ -3,23 +3,21 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 010");
+    console.log("JAVASCRIPT ATTACHED 011");
   });
 
   function loadAfterTimeout() {
     setTimeout(function() {
-        console.log("timeout complete");
         const updateButton = document.querySelector('[data-role="update"]');
-        console.log("updateButton: ", updateButton);
         if (updateButton) {
           updateButton.addEventListener("click", handleUpdate);
         }
-    }, 10000);
+    }, 15000);
   }
 
   function handleUpdate() {
+    console.log("LOADED");
     const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
-    console.log("fn: ", fn);
 
     fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/test/notify", {
       method: "POST",
@@ -30,7 +28,6 @@
         "Content-type": "application/json; charset=UTF-8"
       }
     });
-
   }
 
 })();
