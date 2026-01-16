@@ -1,7 +1,7 @@
 (function () {
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 016");
+    console.log("JAVASCRIPT ATTACHED 017");
   });
 
   function loadAfterTimeout() {
@@ -17,8 +17,8 @@
   function handleUpdate() {
     // const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
 
-    const fnInputIds = ["#120160623"];
-    const selectorString = fnInputIds.join(", ");
+    const fnInputIds = [120160623];
+    const selectorString = fnInputIds.map(id => `#\\3${id}`).join(", ");
     console.log("selector string: ", selectorString);
     const fn = document.querySelector(selectorString);
     console.log("fn:", fn);
