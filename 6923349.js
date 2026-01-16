@@ -3,11 +3,12 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 012");
+    console.log("JAVASCRIPT ATTACHED 013");
   });
 
   function loadAfterTimeout() {
     setTimeout(function() {
+          console.log("LOADED");
         const updateButton = document.querySelector('[data-role="update"]');
         if (updateButton) {
           updateButton.addEventListener("click", handleUpdate);
@@ -16,7 +17,6 @@
   }
 
   function handleUpdate() {
-    console.log("LOADED");
     const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
 
     fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
