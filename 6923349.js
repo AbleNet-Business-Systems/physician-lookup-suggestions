@@ -1,7 +1,7 @@
 (function () {
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 014");
+    console.log("JAVASCRIPT ATTACHED 015");
   });
 
   function loadAfterTimeout() {
@@ -20,7 +20,7 @@
     const fnInputIds = ["#120160623"];
     const selectorString = fnInputIds.join(", ");
 
-    const fn = loader.getEngine().getDocument().querySelector(selectorString).input.value;
+    const fn = document.querySelector(selectorString).input.value;
     console.log("fn:", fn);
 
     // fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
