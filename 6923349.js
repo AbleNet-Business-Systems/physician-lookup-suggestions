@@ -3,21 +3,21 @@
 
   window.addEventListener("load", function () {
     loadAfterTimeout();
-    console.log("JAVASCRIPT ATTACHED 009");
+    console.log("JAVASCRIPT ATTACHED 010");
   });
 
   function loadAfterTimeout() {
     setTimeout(function() {
         console.log("timeout complete");
         const updateButton = document.querySelector('[data-role="update"]');
-        updateButton.addEventListener("click", handleUpdate);
+        console.log("updateButton: ", updateButton);
+        if (updateButton) {
+          updateButton.addEventListener("click", handleUpdate);
+        }
     }, 10000);
   }
 
   function handleUpdate() {
-    // const url = window.location.href;
-    // console.log("the url: ", url);
-
     const fn = loader.getEngine().getDocument().getElementById(fnInputId).input.value;
     console.log("fn: ", fn);
 
