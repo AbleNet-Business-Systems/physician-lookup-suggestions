@@ -1,13 +1,11 @@
 (function () {
   window.addEventListener("load", function () {
     setTimeout(function () {
-      console.log("LOADED");
       const updateButton = document.querySelector('[data-role="update"]');
       if (updateButton) {
         updateButton.addEventListener("click", handleUpdate);
       }
     }, 15000);
-    console.log("JAVASCRIPT ATTACHED 023");
   });
 
   function handleUpdate() {
@@ -17,7 +15,7 @@
       118679395, 119020131, 118715807, 118813830, 118806546, 118836274,
       118653861, 118643415, 118666370, 118753396, 119483997, 118603080,
       118629078, 118595808, 118705065, 118616950, 118693049, 118658459,
-      118804348, 118497202, 118258144, 117601937, 107316407,
+      118804348, 118497202, 118258144, 117601937, 107316407
     ];
 
     const currentInputId = fnInputIds.find((inputId) =>
