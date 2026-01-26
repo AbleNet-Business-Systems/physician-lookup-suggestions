@@ -26,7 +26,7 @@
     const fnId = loader.getEngine().getDocument().getElementById(currentFnInputId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const formNumber = urlParams.get("s");
+    const formNumber = urlParams.get("search");
 
     console.log("json to send: ", {
         fn: fnId ? fnId : "",
