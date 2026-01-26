@@ -1,11 +1,12 @@
 (function () {
   window.addEventListener("load", function () {
+    console.log("JS LOADED 001");
     setTimeout(function () {
       const updateButton = document.querySelector('[data-role="update"]');
       if (updateButton) {
         updateButton.addEventListener("click", handleUpdate);
       }
-    }, 15000);
+    }, 8000);
   });
 
   function handleUpdate() {
@@ -18,28 +19,18 @@
       118804348, 118497202, 118258144, 117601937, 107316407
     ];
 
-    const formNumberInputIds = [
-        120160957, 118258148
-    ];
-
     const currentFnInputId = fnInputIds.find((inputId) =>
       loader.getEngine().getDocument().getElementById(inputId)
     );
 
-    const currentFormNumberInputId = formNumberInputIds.find((id) =>
-        loader.getEngine().getDocument().getElementById(id)
-    );
-
     const fnId = loader.getEngine().getDocument().getElementById(currentFnInputId).input.value;
-    const formNumber = loader.getEngine().getDocument().getElementById(currentFormNumberInputId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const urlFormNumber = urlParams.get("s");
+    const formNumber = urlParams.get("s");
 
     console.log("json to send: ", {
         fn: fnId ? fnId : "",
-        formNumber: formNumber ? formNumber : "",
-        urlFormNumber: urlFormNumber ? urlFormNumber : ""
+        formNumber: formNumber ? formNumber : ""
     });
 
     // fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
