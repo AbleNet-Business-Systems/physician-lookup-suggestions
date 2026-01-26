@@ -1,6 +1,6 @@
 (function () {
   window.addEventListener("load", function () {
-    console.log("JS LOADED 001");
+    console.log("JS LOADED 002");
     setTimeout(function () {
       const updateButton = document.querySelector('[data-role="update"]');
       if (updateButton) {
@@ -26,7 +26,7 @@
     const fnId = loader.getEngine().getDocument().getElementById(currentFnInputId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
-    const formNumber = urlParams.get("search");
+    const formNumber = urlParams.get("s");
 
     console.log("json to send: ", {
         fn: fnId ? fnId : "",
@@ -38,7 +38,6 @@
     //   body: JSON.stringify({
     //     fn: fnId ? fnId : "",
     //     formNumber: formNumber ? formNumber : "",
-    //     urlFormNumber: urlFormNumber ? urlFormNumber : ""
     //   }),
     //   headers: {
     //     "Content-type": "application/json; charset=UTF-8"
