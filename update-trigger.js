@@ -24,10 +24,14 @@
 
     const fnId = loader.getEngine().getDocument().getElementById(currentInputId).input.value;
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const formNumber = urlParams.get("s");
+
     fetch("https://pgdy4cgem3.execute-api.us-east-1.amazonaws.com/npi-query/notify", {
       method: "POST",
       body: JSON.stringify({
-        fn: fnId
+        fn: fnId ? fnId : "",
+        formNumber: formNumber ? formNumber : ""
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
