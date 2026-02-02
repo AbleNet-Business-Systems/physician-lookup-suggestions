@@ -30,6 +30,7 @@
     });
 
     const fnId = loader.getEngine().getDocument().getElementById(currentFnInputId).input.value;
+    
     const formName = loader.getEngine().getDocument().getElementById(currentFormNameFieldId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
