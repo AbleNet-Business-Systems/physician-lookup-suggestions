@@ -1,6 +1,6 @@
 (function () {
   window.addEventListener("load", function () {
-    console.log("JS LOADED 003");
+    console.log("JS LOADED 004");
     setTimeout(function () {
       const updateButton = document.querySelector('[data-role="update"]');
       if (updateButton) {
@@ -19,7 +19,7 @@
       118804348, 118497202, 118258144, 117601937, 107316407
     ];
 
-    const formNameFieldIds = [120160957, 118258147];
+    const formNameFieldIds = [120355023, 120355021];
 
     const currentFnInputId = fnInputIds.find((inputId) => {
       return loader.getEngine().getDocument().getElementById(inputId);
