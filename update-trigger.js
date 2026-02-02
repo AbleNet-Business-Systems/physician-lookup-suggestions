@@ -18,11 +18,19 @@
       118804348, 118497202, 118258144, 117601937, 107316407
     ];
 
+    const formNameFieldIds = [120355023, 120355021];
+
     const currentInputId = fnInputIds.find((inputId) =>
       loader.getEngine().getDocument().getElementById(inputId)
     );
 
+    const currentFormNameFieldId = formNameFieldIds.find((fieldId) => {
+      return loader.getEngine().getDocument().getElementById(fieldId);
+    });
+
     const fnId = loader.getEngine().getDocument().getElementById(currentInputId).input.value;
+    
+    const formName = loader.getEngine().getDocument().getElementById(currentFormNameFieldId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
     const formNumber = urlParams.get("s");
@@ -31,7 +39,8 @@
       method: "POST",
       body: JSON.stringify({
         fn: fnId ? fnId : "",
-        formNumber: formNumber ? formNumber : ""
+        formNumber: formNumber ? formNumber : "",
+        formName: formName ? formName : ""
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
