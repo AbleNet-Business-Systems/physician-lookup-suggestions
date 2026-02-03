@@ -1,6 +1,6 @@
 (function () {
   window.addEventListener("load", function () {
-    console.log("JS LOADED 004");
+    console.log("JS LOADED 005");
     setTimeout(function () {
       const updateButton = document.querySelector('[data-role="update"]');
       if (updateButton) {
@@ -30,7 +30,7 @@
     });
 
     const fnId = loader.getEngine().getDocument().getElementById(currentFnInputId).input.value;
-    
+
     const formName = loader.getEngine().getDocument().getElementById(currentFormNameFieldId).input.value;
 
     const urlParams = new URLSearchParams(window.location.search);
